@@ -16,5 +16,9 @@ gradlePlugin {
             id = libs.plugins.sfom.android.application.compose.get().pluginId
             implementationClass = "AndroidApplicationComposeConventionPlugin"
         }
+        register("hilt") {
+            id = libs.plugins.sfom.hilt.get().pluginId
+            implementationClass = "HiltConventionPlugin"
+        }
     }
 }
