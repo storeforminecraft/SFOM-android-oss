@@ -44,4 +44,6 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 
 sfom-android-application = { id = "sfom.android.application" }
 sfom-android-application-compose = { id = "sfom.android.application.compose" }
+sfom-android-library = { id = "sfom.android.library" }
+sfom-android-feature = { id = "sfom.android.feature" }
 sfom-hilt = { id = "sfom.hilt" }
