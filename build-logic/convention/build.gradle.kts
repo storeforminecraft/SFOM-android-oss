@@ -10,23 +10,32 @@ gradlePlugin {
     plugins {
         register("androidApplication") {
             id = libs.plugins.sfom.android.application.asProvider().get().pluginId
-            implementationClass = "com.storeforminecraft.app.buildlogic.AndroidApplicationConventionPlugin"
+            implementationClass =
+                "com.storeforminecraft.app.buildlogic.AndroidApplicationConventionPlugin"
         }
         register("androidApplicationCompose") {
             id = libs.plugins.sfom.android.application.compose.get().pluginId
-            implementationClass = "com.storeforminecraft.app.buildlogic.AndroidApplicationComposeConventionPlugin"
+            implementationClass =
+                "com.storeforminecraft.app.buildlogic.AndroidApplicationComposeConventionPlugin"
         }
         register("hilt") {
             id = libs.plugins.sfom.hilt.get().pluginId
             implementationClass = "com.storeforminecraft.app.buildlogic.HiltConventionPlugin"
         }
         register("androidLibrary") {
-            id = libs.plugins.sfom.android.library.get().pluginId
-            implementationClass = "com.storeforminecraft.app.buildlogic.AndroidLibraryConventionPlugin"
+            id = libs.plugins.sfom.android.library.asProvider().get().pluginId
+            implementationClass =
+                "com.storeforminecraft.app.buildlogic.AndroidLibraryConventionPlugin"
+        }
+        register("androidLibraryCompose") {
+            id = libs.plugins.sfom.android.library.compose.get().pluginId
+            implementationClass =
+                "com.storeforminecraft.app.buildlogic.AndroidLibraryComposeConventionPlugin"
         }
         register("androidFeature") {
             id = libs.plugins.sfom.android.feature.get().pluginId
-            implementationClass = "com.storeforminecraft.app.buildlogic.AndroidFeatureConventionPlugin"
+            implementationClass =
+                "com.storeforminecraft.app.buildlogic.AndroidFeatureConventionPlugin"
         }
     }
 }

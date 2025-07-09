@@ -22,4 +22,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "SFOM"
 include(":app")
- 
+include(":core:designsystem")
