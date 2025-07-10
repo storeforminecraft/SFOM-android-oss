@@ -1,4 +1,4 @@
-package com.newidea.mcpestore
+package com.storeforminecraft.app
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

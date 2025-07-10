@@ -3,7 +3,7 @@ package com.storeforminecraft.app.core.designsystem.theme
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import missing.namespace.R
+import com.storeforminecraft.app.core.designsystem.R
 
 internal val Pretendard = FontFamily(
     Font(R.font.pretendard_thin, FontWeight.Thin),
