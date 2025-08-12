@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.newidea.mcpestore"
+    namespace = "com.storeforminecraft.app"
     compileSdk = 35
 
     defaultConfig {

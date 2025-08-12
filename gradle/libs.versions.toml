@@ -1,6 +1,7 @@
 [versions]
 agp = "8.9.3"
 kotlin = "2.1.10"
+kotlinxSerializationJson = "1.8.0"
 ksp = "2.1.10-1.0.31"
 coreKtx = "1.16.0"
 junit = "4.13.2"
@@ -8,8 +9,10 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.9.1"
 activityCompose = "1.10.1"
-composeBom = "2025.06.01"
+composeBom = "2025.07.00"
 hilt = "2.56.2"
+firebase = "34.0.0"
+androidxNavigation = "2.9.3"
 
 [libraries]
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
@@ -25,17 +28,29 @@ hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.r
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-core = { group = "com.google.dagger", name = "hilt-core", version.ref = "hilt" }
 
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebase" }
+firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth" }
+
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 
 sfom-android-application = { id = "sfom.android.application" }
 sfom-android-application-compose = { id = "sfom.android.application.compose" }
 sfom-android-library = { id = "sfom.android.library" }
 sfom-android-library-compose = { id = "sfom.android.library.compose" }
 sfom-android-feature = { id = "sfom.android.feature" }
+sfom-jvm-library = {id = "sfom.jvm.library"}
 sfom-hilt = { id = "sfom.hilt" }

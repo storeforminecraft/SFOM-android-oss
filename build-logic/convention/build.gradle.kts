@@ -37,5 +37,9 @@ gradlePlugin {
             implementationClass =
                 "com.storeforminecraft.app.buildlogic.AndroidFeatureConventionPlugin"
         }
+        register("jvmLibrary") {
+            id = libs.plugins.sfom.jvm.library.get().pluginId
+            implementationClass = "com.storeforminecraft.app.buildlogic.JvmLibraryConventionPlugin"
+        }
     }
 }

@@ -25,3 +25,10 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 include(":app")
 include(":core:designsystem")
+include(":core:data")
+include(":core:firestore")
+include("core:auth")
+include("core:common")
+
+include("feature:auth")
+include("feature:studio")
