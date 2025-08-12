@@ -28,3 +28,7 @@ include(":core:designsystem")
 include(":core:data")
 include(":core:firestore")
 include("core:auth")
+include("core:common")
+
+include("feature:auth")
+include("feature:studio")

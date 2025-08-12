@@ -1,10 +1,10 @@
 plugins {
-    alias(libs.plugins.sfom.android.library)
-    alias(libs.plugins.sfom.hilt)
+    alias(libs.plugins.sfom.android.feature)
+    alias(libs.plugins.sfom.android.library.compose)
 }
 
 android {
-    namespace = "com.storeforminecraft.app.core.auth"
+    namespace = "com.storeforminecraft.app.feature.auth"
 }
 
 dependencies {
