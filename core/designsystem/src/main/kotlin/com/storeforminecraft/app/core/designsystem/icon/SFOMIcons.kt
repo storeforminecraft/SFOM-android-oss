@@ -1,33 +1,37 @@
 package com.storeforminecraft.app.core.designsystem.icon
 
 import androidx.annotation.DrawableRes
+import com.storeforminecraft.app.core.designsystem.R
 import org.jetbrains.annotations.Async.Schedule
 
 object SFOMIcons {
     @DrawableRes
-    val ACCOUNT_CIRCLE = com.storeforminecraft.app.core.designsystem.R.drawable.account_circle
+    val ACCOUNT_CIRCLE = R.drawable.account_circle
 
     @DrawableRes
-    val SEARCH = com.storeforminecraft.app.core.designsystem.R.drawable.search
+    val SEARCH = R.drawable.search
 
     @DrawableRes
-    val SETTINGS = com.storeforminecraft.app.core.designsystem.R.drawable.settings
+    val SETTINGS = R.drawable.settings
 
     @DrawableRes
-    val CHEVRON_RIGHT = com.storeforminecraft.app.core.designsystem.R.drawable.chevorn_right
+    val CHEVRON_RIGHT = R.drawable.chevorn_right
 
     @DrawableRes
-    val SCHEDULE = com.storeforminecraft.app.core.designsystem.R.drawable.schedule
+    val SCHEDULE = R.drawable.schedule
 
     @DrawableRes
-    val THUMB_UP_SMALL = com.storeforminecraft.app.core.designsystem.R.drawable.thumb_up_small
+    val THUMB_UP_SMALL = R.drawable.thumb_up_small
 
     @DrawableRes
-    val COMMENT_SMALL = com.storeforminecraft.app.core.designsystem.R.drawable.comment_small
+    val COMMENT_SMALL = R.drawable.comment_small
 
     @DrawableRes
-    val CLOSE = com.storeforminecraft.app.core.designsystem.R.drawable.close
+    val CLOSE = R.drawable.close
 
     @DrawableRes
-    val CATEGORY_MAP = com.storeforminecraft.app.core.designsystem.R.drawable.category_map
+    val CATEGORY_MAP = R.drawable.category_map
+
+    @DrawableRes
+    val FOLDER = R.drawable.folder
 }

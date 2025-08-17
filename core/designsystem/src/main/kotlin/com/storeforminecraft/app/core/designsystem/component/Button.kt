@@ -1,5 +1,6 @@
 package com.storeforminecraft.app.core.designsystem.component
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -19,7 +20,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -92,6 +95,7 @@ fun SFOMButtonPreview() {
         SFOMButton(
             text = "value",
             null,
+            null,
             backgroundColor = SFOMTheme.colorScheme.sfomGreenPrimary,
             textColor = SFOMTheme.colorScheme.textWhite,
             sfomButtonSize = SFOMButtonSize.FULLWIDTH
@@ -104,9 +108,10 @@ fun SFOMButtonPreview() {
 @Composable
 fun SFOMButton(
     text: String?,
-    icon: Painter?,
+    @DrawableRes icon: Int?,
+    iconTintColor: Color?,
     backgroundColor: Color,
-    textColor: Color,
+    textColor: Color?,
     sfomButtonSize: SFOMButtonSize,
     modifier: Modifier = Modifier,
     onClick: () -> Unit
@@ -121,8 +126,7 @@ fun SFOMButton(
                 }
             }
             .background(
-                color = backgroundColor,
-                shape = RoundedCornerShape(sfomButtonSize.cornerRadius)
+                color = backgroundColor, shape = RoundedCornerShape(sfomButtonSize.cornerRadius)
             )
             .clip(
                 RoundedCornerShape(sfomButtonSize.cornerRadius)
@@ -131,18 +135,26 @@ fun SFOMButton(
                 onClick()
             }
             .padding(sfomButtonSize.horizontal, sfomButtonSize.vertical),
-        horizontalArrangement = Arrangement.Center) {
-        text?.let {
-            Text(text = it, style = sfomButtonSize.textStyle(), color = textColor)
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically) {
+        icon?.let {
+            Image(
+                painter = painterResource(icon),
+                colorFilter = if (iconTintColor != null) ColorFilter.tint(iconTintColor) else null,
+                modifier = Modifier.size(sfomButtonSize.iconSize),
+                contentDescription = null
+            )
         }
+
         if (text != null && icon != null) {
             Spacer(Modifier.width(sfomButtonSize.iconAndTextSpacing))
         }
-        icon?.let {
-            Image(
-                painter = it,
-                modifier = Modifier.size(sfomButtonSize.iconSize),
-                contentDescription = null
+
+        text?.let {
+            Text(
+                text = it,
+                style = sfomButtonSize.textStyle(),
+                color = textColor ?: SFOMTheme.colorScheme.textPrimary
             )
         }
     }
@@ -153,18 +165,14 @@ fun SFOMButton(
 fun TitleWithRightButtonPreview() {
     SFOMTheme {
         TitleWithRightButton(
-            "Upload Recently",
-            "My Contents"
+            "Upload Recently", "My Contents"
         ) { }
     }
 }
 
 @Composable
 fun TitleWithRightButton(
-    title: String,
-    actionText: String,
-    modifier: Modifier = Modifier,
-    onActionTextClick: () -> Unit
+    title: String, actionText: String, modifier: Modifier = Modifier, onActionTextClick: () -> Unit
 ) {
     Row(modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
         Text(

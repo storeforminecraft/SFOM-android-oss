@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.storeforminecraft.app.core.designsystem.icon.SFOMIcons
 import com.storeforminecraft.app.core.designsystem.theme.SFOMColorScheme
 import com.storeforminecraft.app.core.designsystem.theme.SFOMTheme
 
@@ -21,7 +22,7 @@ import com.storeforminecraft.app.core.designsystem.theme.SFOMTheme
 @Composable
 fun SelectInputPreview() {
     SFOMTheme {
-        Column(Modifier.fillMaxSize()) {
+        Column(Modifier.fillMaxWidth()) {
             SelectInput(
                 "Attachment",
                 "Select",
@@ -47,7 +48,16 @@ fun SelectInputPreview() {
                         shape = RoundedCornerShape(16.dp)
                     )
             ) {
+                SFOMButton(
+                    text = "Upload",
+                    icon = SFOMIcons.FOLDER,
+                    iconTintColor = SFOMTheme.colorScheme.textPrimary,
+                    backgroundColor = SFOMTheme.colorScheme.backgroundSecondary,
+                    textColor = SFOMTheme.colorScheme.textPrimary,
+                    sfomButtonSize = SFOMButtonSize.MD
+                ) {
 
+                }
             }
         }
     }
