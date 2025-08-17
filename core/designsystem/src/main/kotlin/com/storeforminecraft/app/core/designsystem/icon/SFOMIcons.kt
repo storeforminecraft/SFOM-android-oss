@@ -26,5 +26,8 @@ object SFOMIcons {
     val COMMENT_SMALL = com.storeforminecraft.app.core.designsystem.R.drawable.comment_small
 
     @DrawableRes
+    val CLOSE = com.storeforminecraft.app.core.designsystem.R.drawable.close
+
+    @DrawableRes
     val CATEGORY_MAP = com.storeforminecraft.app.core.designsystem.R.drawable.category_map
 }
