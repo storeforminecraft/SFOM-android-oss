@@ -34,4 +34,16 @@ object SFOMIcons {
 
     @DrawableRes
     val FOLDER = R.drawable.folder
+
+    @DrawableRes
+    val ARROW_BACK = R.drawable.arrow_back
+
+    @DrawableRes
+    val PHOTO = R.drawable.photo
+
+    @DrawableRes
+    val INFO = R.drawable.info
+
+    @DrawableRes
+    val ERROR = R.drawable.error
 }

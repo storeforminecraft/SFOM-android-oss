@@ -5,6 +5,7 @@ import androidx.compose.ui.graphics.Color
 data class SFOMColorScheme(
     val sfomGreenPrimary: Color,
     val sfomGreenSecondary: Color,
+    val sfomBluePrimary: Color,
     val sfomBlue50: Color,
     val sfomBlue100: Color,
     val sfomBlue200: Color,
@@ -71,6 +72,7 @@ data class SFOMColorScheme(
 internal val LightSFOMColorScheme = SFOMColorScheme(
     sfomGreenPrimary = Color(0xFF8BC34A),
     sfomGreenSecondary = Color(0xFFF1F8E9),
+    sfomBluePrimary = Color(0xFF55B1DC),
     sfomBlue50 = Color(0xFFF2F9FD),
     sfomBlue100 = Color(0xFFE4F1FA),
     sfomBlue200 = Color(0xFFC4E2F3),
@@ -137,6 +139,7 @@ internal val LightSFOMColorScheme = SFOMColorScheme(
 internal val DarkSFOMColorScheme = SFOMColorScheme(
     sfomGreenPrimary = Color(0xFF8BC34A),
     sfomGreenSecondary = Color(0xFF42532F),
+    sfomBluePrimary = Color(0xFF55B1DC),
     sfomBlue50 = Color(0xFFF2F9FD),
     sfomBlue100 = Color(0xFFE4F1FA),
     sfomBlue200 = Color(0xFFC4E2F3),

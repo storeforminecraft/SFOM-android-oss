@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,7 +20,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -31,7 +29,7 @@ import androidx.compose.ui.unit.dp
 import com.storeforminecraft.app.core.designsystem.theme.SFOMTheme
 
 
-sealed class SFOMButtonSize(
+sealed class SFOMButtonStyle(
     val horizontal: Dp,
     val vertical: Dp,
     val cornerRadius: Dp,
@@ -39,7 +37,7 @@ sealed class SFOMButtonSize(
     val iconAndTextSpacing: Dp,
     val textStyle: @Composable () -> TextStyle
 ) {
-    data object SMALL : SFOMButtonSize(
+    data object SMALL : SFOMButtonStyle(
         horizontal = 12.dp,
         vertical = 6.dp,
         cornerRadius = 12.dp,
@@ -51,7 +49,7 @@ sealed class SFOMButtonSize(
             )
         })
 
-    data object MD : SFOMButtonSize(
+    data object MD : SFOMButtonStyle(
         horizontal = 12.dp,
         vertical = 10.dp,
         cornerRadius = 16.dp,
@@ -63,7 +61,7 @@ sealed class SFOMButtonSize(
             )
         })
 
-    data object LG : SFOMButtonSize(
+    data object LG : SFOMButtonStyle(
         horizontal = 12.dp,
         vertical = 12.dp,
         cornerRadius = 24.dp,
@@ -75,7 +73,7 @@ sealed class SFOMButtonSize(
             )
         })
 
-    data object FULLWIDTH : SFOMButtonSize(
+    data object FULLWIDTH : SFOMButtonStyle(
         horizontal = 16.dp,
         vertical = 16.dp,
         cornerRadius = 20.dp,
@@ -98,7 +96,7 @@ fun SFOMButtonPreview() {
             null,
             backgroundColor = SFOMTheme.colorScheme.sfomGreenPrimary,
             textColor = SFOMTheme.colorScheme.textWhite,
-            sfomButtonSize = SFOMButtonSize.FULLWIDTH
+            sfomButtonStyle = SFOMButtonStyle.FULLWIDTH
         ) {
 
         }
@@ -112,48 +110,48 @@ fun SFOMButton(
     iconTintColor: Color?,
     backgroundColor: Color,
     textColor: Color?,
-    sfomButtonSize: SFOMButtonSize,
+    sfomButtonStyle: SFOMButtonStyle,
     modifier: Modifier = Modifier,
     onClick: () -> Unit
 ) {
     Row(
         modifier
             .let {
-                if (sfomButtonSize is SFOMButtonSize.FULLWIDTH) {
+                if (sfomButtonStyle is SFOMButtonStyle.FULLWIDTH) {
                     it.fillMaxWidth()
                 } else {
                     it
                 }
             }
             .background(
-                color = backgroundColor, shape = RoundedCornerShape(sfomButtonSize.cornerRadius)
+                color = backgroundColor, shape = RoundedCornerShape(sfomButtonStyle.cornerRadius)
             )
             .clip(
-                RoundedCornerShape(sfomButtonSize.cornerRadius)
+                RoundedCornerShape(sfomButtonStyle.cornerRadius)
             )
             .clickable {
                 onClick()
             }
-            .padding(sfomButtonSize.horizontal, sfomButtonSize.vertical),
+            .padding(sfomButtonStyle.horizontal, sfomButtonStyle.vertical),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically) {
         icon?.let {
             Image(
                 painter = painterResource(icon),
                 colorFilter = if (iconTintColor != null) ColorFilter.tint(iconTintColor) else null,
-                modifier = Modifier.size(sfomButtonSize.iconSize),
+                modifier = Modifier.size(sfomButtonStyle.iconSize),
                 contentDescription = null
             )
         }
 
         if (text != null && icon != null) {
-            Spacer(Modifier.width(sfomButtonSize.iconAndTextSpacing))
+            Spacer(Modifier.width(sfomButtonStyle.iconAndTextSpacing))
         }
 
         text?.let {
             Text(
                 text = it,
-                style = sfomButtonSize.textStyle(),
+                style = sfomButtonStyle.textStyle(),
                 color = textColor ?: SFOMTheme.colorScheme.textPrimary
             )
         }

@@ -9,10 +9,11 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.9.1"
 activityCompose = "1.10.1"
-composeBom = "2025.07.00"
+composeBom = "2025.08.00"
 hilt = "2.56.2"
 firebase = "34.0.0"
 androidxNavigation = "2.9.3"
+coil = "3.3.0"
 
 [libraries]
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
@@ -36,6 +37,8 @@ kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
 
+coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
@@ -52,5 +55,5 @@ sfom-android-application-compose = { id = "sfom.android.application.compose" }
 sfom-android-library = { id = "sfom.android.library" }
 sfom-android-library-compose = { id = "sfom.android.library.compose" }
 sfom-android-feature = { id = "sfom.android.feature" }
-sfom-jvm-library = {id = "sfom.jvm.library"}
+sfom-jvm-library = { id = "sfom.jvm.library" }
 sfom-hilt = { id = "sfom.hilt" }
