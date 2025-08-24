@@ -55,7 +55,7 @@ fun StudioTopBar() {
         )
         Spacer(Modifier.width(16.dp))
         Text(
-            text = "Nickname님", style = SFOMTheme.typography.XL.copy(
+            text = "Nickname", style = SFOMTheme.typography.XL.copy(
                 fontWeight = FontWeight.Bold
             )
         )

@@ -1,5 +1,6 @@
 package com.storeforminecraft.app.feature.studio
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,7 +30,8 @@ import com.storeforminecraft.app.core.designsystem.component.AlertMessage
 import com.storeforminecraft.app.core.designsystem.component.SFOMButton
 import com.storeforminecraft.app.core.designsystem.component.SFOMButtonStyle
 import com.storeforminecraft.app.core.designsystem.component.SFOMCheckbox
-import com.storeforminecraft.app.core.designsystem.component.SFOMInput
+import com.storeforminecraft.app.core.designsystem.component.SFOMLabelInput
+import com.storeforminecraft.app.core.designsystem.component.SFOMLabelInputStyle
 import com.storeforminecraft.app.core.designsystem.component.SFOMSelect
 import com.storeforminecraft.app.core.designsystem.icon.SFOMIcons
 import com.storeforminecraft.app.core.designsystem.theme.SFOMTheme
@@ -40,7 +42,13 @@ import com.storeforminecraft.app.core.ui.ImageSelectionGallery
 @Composable
 fun GameResourceUploadContentInfoScreenPreview() {
     SFOMTheme {
-        GameResourceUploadContentInfoScreen()
+        Box(
+            Modifier
+                .fillMaxSize()
+                .background(color = SFOMTheme.colorScheme.backgroundPrimary)
+        ) {
+            GameResourceUploadContentInfoScreen()
+        }
     }
 }
 
@@ -136,7 +144,13 @@ fun GameResourceUploadContentInfoScreen() {
 
             Spacer(Modifier.height(12.dp))
 
-            SFOMInput(titleTextFieldState, Modifier.fillMaxWidth(), "Please enter a title")
+            SFOMLabelInput(
+                titleTextFieldState,
+                Modifier.fillMaxWidth(),
+                "Please enter a title",
+                "Title",
+                SFOMLabelInputStyle.Regular
+            )
         }
 
         SFOMButton(
