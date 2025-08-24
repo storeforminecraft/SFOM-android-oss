@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material3.Icon
@@ -19,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -26,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import com.storeforminecraft.app.core.designsystem.component.AlertMessage
 import com.storeforminecraft.app.core.designsystem.component.SFOMButton
 import com.storeforminecraft.app.core.designsystem.component.SFOMButtonStyle
+import com.storeforminecraft.app.core.designsystem.component.SFOMCheckbox
 import com.storeforminecraft.app.core.designsystem.component.SFOMInput
 import com.storeforminecraft.app.core.designsystem.component.SFOMSelect
 import com.storeforminecraft.app.core.designsystem.icon.SFOMIcons
@@ -215,17 +218,21 @@ fun GameResourceUploadAdditionalInfoScreen() {
 
         Spacer(Modifier.height(16.dp))
 
-        ImageSelectionGallery(Modifier.fillMaxWidth().offset(x = (-16).dp))
+        ImageSelectionGallery(
+            Modifier
+                .fillMaxWidth()
+                .offset(x = (-16).dp)
+        )
 
         Spacer(Modifier.height(16.dp))
 
         AlertMessage(
-            SFOMIcons.INFO,
-            SFOMTheme.colorScheme.sfomBluePrimary,
-            "Choose at least two screenshots that clearly show the features of your map.",
-            SFOMTheme.colorScheme.textPrimary,
-            SFOMTheme.colorScheme.sfomBlue100,
-            Modifier.fillMaxWidth()
+            icon = SFOMIcons.INFO,
+            iconTintColor = SFOMTheme.colorScheme.sfomBluePrimary,
+            message = "Choose at least two screenshots that clearly show the features of your map.",
+            messageTextColor = SFOMTheme.colorScheme.textPrimary,
+            backgroundColor = SFOMTheme.colorScheme.sfomBlue100,
+            modifier = Modifier.fillMaxWidth()
         )
 
         Spacer(Modifier.height(32.dp))
@@ -236,6 +243,44 @@ fun GameResourceUploadAdditionalInfoScreen() {
             ),
             color = SFOMTheme.colorScheme.textPrimary
         )
+
+        Spacer(Modifier.height(16.dp))
+
+        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+            SFOMCheckbox(false) {
+
+            }
+
+            Spacer(Modifier.width(16.dp))
+
+            Text(
+                "Contains resources I didn't create.", style = SFOMTheme.typography.XS.copy(
+                    fontWeight = FontWeight.SemiBold,
+                ),
+                color = SFOMTheme.colorScheme.textSecondary
+            )
+        }
+
+        Spacer(Modifier.height(16.dp))
+
+        AlertMessage(
+            icon = SFOMIcons.ERROR,
+            iconTintColor = SFOMTheme.colorScheme.colorsExclamation,
+            message = "If a copyright infringement claim is filed for content without a source, the content may be immediately subject to penalties.",
+            messageTextColor = SFOMTheme.colorScheme.textPrimary,
+            backgroundColor = Color(0xffFFF2C5),
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        Spacer(Modifier.height(24.dp))
+
+        Text(
+            "Content Description", style = SFOMTheme.typography.MD.copy(
+                fontWeight = FontWeight.SemiBold
+            ), color = SFOMTheme.colorScheme.textPrimary
+        )
+
+        Spacer(Modifier.height(16.dp))
 
     }
 }

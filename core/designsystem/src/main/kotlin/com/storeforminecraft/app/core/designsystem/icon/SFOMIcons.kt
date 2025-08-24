@@ -46,4 +46,10 @@ object SFOMIcons {
 
     @DrawableRes
     val ERROR = R.drawable.error
+
+    @DrawableRes
+    val CHECK = R.drawable.check
+
+    @DrawableRes
+    val CHECK_SMALL = R.drawable.check_small
 }
