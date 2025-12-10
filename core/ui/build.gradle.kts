@@ -11,4 +11,5 @@ dependencies {
     api(projects.core.designsystem)
 
     implementation(libs.coil.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.savedstate)
 }

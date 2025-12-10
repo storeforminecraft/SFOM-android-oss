@@ -1,8 +1,10 @@
 package com.storeforminecraft.app.core.designsystem.component
 
 import androidx.annotation.DrawableRes
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -93,7 +95,6 @@ fun SFOMButtonPreview() {
         SFOMButton(
             text = "value",
             null,
-            null,
             backgroundColor = SFOMTheme.colorScheme.sfomGreenPrimary,
             textColor = SFOMTheme.colorScheme.textWhite,
             sfomButtonStyle = SFOMButtonStyle.FULLWIDTH
@@ -105,13 +106,14 @@ fun SFOMButtonPreview() {
 
 @Composable
 fun SFOMButton(
-    text: String?,
-    @DrawableRes icon: Int?,
-    iconTintColor: Color?,
-    backgroundColor: Color,
-    textColor: Color?,
-    sfomButtonStyle: SFOMButtonStyle,
+    text: String? = null,
+    @DrawableRes icon: Int? = null,
     modifier: Modifier = Modifier,
+    sfomButtonStyle: SFOMButtonStyle.FULLWIDTH,
+    backgroundColor: Color = SFOMTheme.colorScheme.backgroundPrimary,
+    textColor: Color? = null,
+    iconTintColor: Color? = null,
+    border: BorderStroke? = null,
     onClick: () -> Unit
 ) {
     Row(
@@ -122,6 +124,13 @@ fun SFOMButton(
                 } else {
                     it
                 }
+            }
+            .let {
+                 if(border != null) {
+                     it.border(border = border, shape = RoundedCornerShape(sfomButtonStyle.cornerRadius))
+                 } else {
+                     it
+                 }
             }
             .background(
                 color = backgroundColor, shape = RoundedCornerShape(sfomButtonStyle.cornerRadius)

@@ -52,7 +52,7 @@ fun SFOMSelectPreview() {
                     iconTintColor = SFOMTheme.colorScheme.textPrimary,
                     backgroundColor = SFOMTheme.colorScheme.backgroundSecondary,
                     textColor = SFOMTheme.colorScheme.textPrimary,
-                    sfomButtonStyle = SFOMButtonStyle.MD
+                    sfomButtonStyle = SFOMButtonStyle.FULLWIDTH
                 ) {
 
                 }

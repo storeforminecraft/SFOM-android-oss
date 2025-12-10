@@ -52,4 +52,10 @@ object SFOMIcons {
 
     @DrawableRes
     val CHECK_SMALL = R.drawable.check_small
+
+    @DrawableRes
+    val ADD_CIRCLE = R.drawable.add_circle
+
+    @DrawableRes
+    val MINUS_CIRCLE = R.drawable.minus_circle
 }

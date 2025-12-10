@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -13,23 +14,33 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.input.rememberTextFieldState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.storeforminecraft.app.core.designsystem.component.AlertMessage
+import com.storeforminecraft.app.core.designsystem.component.OptionButton
 import com.storeforminecraft.app.core.designsystem.component.SFOMButton
 import com.storeforminecraft.app.core.designsystem.component.SFOMButtonStyle
 import com.storeforminecraft.app.core.designsystem.component.SFOMCheckbox
+import com.storeforminecraft.app.core.designsystem.component.SFOMInput
 import com.storeforminecraft.app.core.designsystem.component.SFOMLabelInput
 import com.storeforminecraft.app.core.designsystem.component.SFOMLabelInputStyle
 import com.storeforminecraft.app.core.designsystem.component.SFOMSelect
@@ -62,7 +73,6 @@ fun GameResourceUploadContentInfoScreen() {
     ) {
         Column(
             Modifier
-                .weight(1f)
                 .fillMaxSize()
         ) {
             IconButton(
@@ -176,125 +186,243 @@ fun GameResourceUploadAdditionalInfoScreenPreview() {
 
 @Composable
 fun GameResourceUploadAdditionalInfoScreen() {
-    Column(
-        Modifier
-            .fillMaxSize()
-            .padding(16.dp)
-    ) {
-        Box(Modifier.fillMaxWidth()) {
-            IconButton(
-                modifier = Modifier
-                    .size(24.dp)
-                    .align(Alignment.CenterStart),
-                onClick = {
+    val scrollState = rememberScrollState()
 
-                }
-            ) {
-                Icon(
-                    painter = painterResource(SFOMIcons.ARROW_BACK),
-                    contentDescription = null,
-                    tint = SFOMTheme.colorScheme.textQuaternary
-                )
-            }
+    var isSelectedA by remember {
+        mutableStateOf(false)
+    }
 
-            IconButton(
-                modifier = Modifier
-                    .size(24.dp)
-                    .align(Alignment.CenterEnd),
-                onClick = {
+    var isSelectedB by remember {
+        mutableStateOf(false)
+    }
 
-                }
-            ) {
-                Icon(
-                    painter = painterResource(SFOMIcons.CLOSE),
-                    contentDescription = null,
-                    tint = SFOMTheme.colorScheme.textQuaternary
-                )
-            }
+    val isScrolledToEnd by remember {
+        derivedStateOf {
+            scrollState.value >= scrollState.maxValue
         }
+    }
 
-        Spacer(Modifier.height(16.dp))
-
-        Text(
-            text = "Write information\nabout your content.",
-            style = SFOMTheme.typography.XL.copy(fontWeight = FontWeight.Bold),
-            color = SFOMTheme.colorScheme.textPrimary
-        )
-
-        Spacer(Modifier.height(24.dp))
-
-        Text(
-            text = "Preview images", style = SFOMTheme.typography.MD.copy(
-                fontWeight = FontWeight.SemiBold
-            ),
-            color = SFOMTheme.colorScheme.textPrimary
-        )
-
-        Spacer(Modifier.height(16.dp))
-
-        ImageSelectionGallery(
+    Column(Modifier.fillMaxSize()) {
+        Column(
             Modifier
-                .fillMaxWidth()
-                .offset(x = (-16).dp)
-        )
+                .weight(1f)
+                .fillMaxSize()
+                .background(SFOMTheme.colorScheme.backgroundPrimary)
+                .verticalScroll(scrollState)
+                .padding(16.dp)
+        ) {
+            Box(Modifier.fillMaxWidth()) {
+                IconButton(
+                    modifier = Modifier
+                        .size(24.dp)
+                        .align(Alignment.CenterStart),
+                    onClick = {
 
-        Spacer(Modifier.height(16.dp))
+                    }
+                ) {
+                    Icon(
+                        painter = painterResource(SFOMIcons.ARROW_BACK),
+                        contentDescription = null,
+                        tint = SFOMTheme.colorScheme.textQuaternary
+                    )
+                }
 
-        AlertMessage(
-            icon = SFOMIcons.INFO,
-            iconTintColor = SFOMTheme.colorScheme.sfomBluePrimary,
-            message = "Choose at least two screenshots that clearly show the features of your map.",
-            messageTextColor = SFOMTheme.colorScheme.textPrimary,
-            backgroundColor = SFOMTheme.colorScheme.sfomBlue100,
-            modifier = Modifier.fillMaxWidth()
-        )
+                IconButton(
+                    modifier = Modifier
+                        .size(24.dp)
+                        .align(Alignment.CenterEnd),
+                    onClick = {
 
-        Spacer(Modifier.height(32.dp))
-
-        Text(
-            text = "Did you use external resources?", style = SFOMTheme.typography.MD.copy(
-                fontWeight = FontWeight.SemiBold
-            ),
-            color = SFOMTheme.colorScheme.textPrimary
-        )
-
-        Spacer(Modifier.height(16.dp))
-
-        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-            SFOMCheckbox(false) {
-
+                    }
+                ) {
+                    Icon(
+                        painter = painterResource(SFOMIcons.CLOSE),
+                        contentDescription = null,
+                        tint = SFOMTheme.colorScheme.textQuaternary
+                    )
+                }
             }
 
-            Spacer(Modifier.width(16.dp))
+            Spacer(Modifier.height(16.dp))
 
             Text(
-                "Contains resources I didn't create.", style = SFOMTheme.typography.XS.copy(
-                    fontWeight = FontWeight.SemiBold,
-                ),
-                color = SFOMTheme.colorScheme.textSecondary
+                text = "Write information\nabout your content.",
+                style = SFOMTheme.typography.XL.copy(fontWeight = FontWeight.Bold),
+                color = SFOMTheme.colorScheme.textPrimary
             )
+
+            Spacer(Modifier.height(24.dp))
+
+            Text(
+                text = "Preview images", style = SFOMTheme.typography.MD.copy(
+                    fontWeight = FontWeight.SemiBold
+                ),
+                color = SFOMTheme.colorScheme.textPrimary
+            )
+
+            Spacer(Modifier.height(16.dp))
+
+            ImageSelectionGallery(
+                Modifier
+                    .fillMaxWidth()
+                    .offset(x = (-16).dp)
+            )
+
+            Spacer(Modifier.height(16.dp))
+
+            AlertMessage(
+                icon = SFOMIcons.INFO,
+                iconTintColor = SFOMTheme.colorScheme.sfomBluePrimary,
+                message = "Choose at least two screenshots that clearly show the features of your map.",
+                messageTextColor = SFOMTheme.colorScheme.textPrimary,
+                backgroundColor = SFOMTheme.colorScheme.sfomBlue100,
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(Modifier.height(32.dp))
+
+            Text(
+                text = "Did you use external resources?", style = SFOMTheme.typography.MD.copy(
+                    fontWeight = FontWeight.SemiBold
+                ),
+                color = SFOMTheme.colorScheme.textPrimary
+            )
+
+            Spacer(Modifier.height(16.dp))
+
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                SFOMCheckbox(false) {
+
+                }
+
+                Spacer(Modifier.width(16.dp))
+
+                Text(
+                    "Contains resources I didn't create.", style = SFOMTheme.typography.XS.copy(
+                        fontWeight = FontWeight.SemiBold,
+                    ),
+                    color = SFOMTheme.colorScheme.textSecondary
+                )
+            }
+
+            Spacer(Modifier.height(16.dp))
+
+            AlertMessage(
+                icon = SFOMIcons.ERROR,
+                iconTintColor = SFOMTheme.colorScheme.colorsExclamation,
+                message = "If a copyright infringement claim is filed for content without a source, the content may be immediately subject to penalties.",
+                messageTextColor = SFOMTheme.colorScheme.textPrimary,
+                backgroundColor = Color(0xffFFF2C5),
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(Modifier.height(16.dp))
+
+            Column(Modifier.fillMaxWidth()) {
+                SFOMLabelInput(
+                    rememberTextFieldState(),
+                    Modifier.fillMaxWidth(),
+                    "Please enter a source",
+                    "Source",
+                    SFOMLabelInputStyle.Small
+                )
+            }
+
+            Spacer(Modifier.height(24.dp))
+
+            Text(
+                "Content Description", style = SFOMTheme.typography.MD.copy(
+                    fontWeight = FontWeight.SemiBold
+                ), color = SFOMTheme.colorScheme.textPrimary
+            )
+
+            Spacer(Modifier.height(16.dp))
+
+            SFOMInput(
+                rememberTextFieldState(),
+                Modifier
+                    .fillMaxWidth()
+                    .defaultMinSize(minHeight = 236.dp),
+                "Please write a description for users who will enjoy your content."
+            )
+
+            Spacer(Modifier.height(24.dp))
+
+            Text(
+                "Content Description", style = SFOMTheme.typography.MD.copy(
+                    fontWeight = FontWeight.SemiBold
+                ), color = SFOMTheme.colorScheme.textPrimary
+            )
+
+            Spacer(Modifier.height(16.dp))
+
+            Row(Modifier.fillMaxWidth()) {
+                OptionButton(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f),
+                    text = "Streaming Permissions",
+                    textSelected = "Allow Streaming",
+                    isSelected = isSelectedA
+                ) {
+                    isSelectedA = !isSelectedA
+                }
+
+                Spacer(Modifier.width(8.dp))
+
+                OptionButton(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f),
+                    text = "Modifications",
+                    isSelected = isSelectedB,
+                ) {
+                    isSelectedB = !isSelectedB
+                }
+            }
+
+            Spacer(Modifier.height(12.dp))
+
+            val permissionMessage by remember {
+                derivedStateOf {
+                    when {
+                        isSelectedA && !isSelectedB -> "I allow others to use my content on YouTube. I do not allow derivative works."
+                        !isSelectedA && isSelectedB -> "I do not allow others to use my content on YouTube. I allow derivative works."
+                        !isSelectedA && !isSelectedB -> "I do not allow both using my content on YouTube and derivative works."
+                        else -> "I allow both using my content on YouTube and derivative works."
+                    }
+                }
+            }
+
+            AlertMessage(
+                icon = SFOMIcons.INFO,
+                iconTintColor = SFOMTheme.colorScheme.sfomBluePrimary,
+                message = permissionMessage,
+                messageTextColor = SFOMTheme.colorScheme.textPrimary,
+                backgroundColor = SFOMTheme.colorScheme.sfomBlue100,
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(Modifier.height(8.dp))
         }
 
-        Spacer(Modifier.height(16.dp))
+        Box(
+            Modifier
+                .fillMaxWidth()
+                .shadow(elevation = if (isScrolledToEnd) 0.dp else 4.dp)
+                .background(SFOMTheme.colorScheme.backgroundPrimary)
+                .padding(16.dp)
+        ) {
+            SFOMButton(
+                "Upload",
+                null,
+                null,
+                SFOMTheme.colorScheme.sfomGreenPrimary,
+                SFOMTheme.colorScheme.textWhite,
+                SFOMButtonStyle.FULLWIDTH
+            ) {
 
-        AlertMessage(
-            icon = SFOMIcons.ERROR,
-            iconTintColor = SFOMTheme.colorScheme.colorsExclamation,
-            message = "If a copyright infringement claim is filed for content without a source, the content may be immediately subject to penalties.",
-            messageTextColor = SFOMTheme.colorScheme.textPrimary,
-            backgroundColor = Color(0xffFFF2C5),
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(Modifier.height(24.dp))
-
-        Text(
-            "Content Description", style = SFOMTheme.typography.MD.copy(
-                fontWeight = FontWeight.SemiBold
-            ), color = SFOMTheme.colorScheme.textPrimary
-        )
-
-        Spacer(Modifier.height(16.dp))
-
+            }
+        }
     }
 }
