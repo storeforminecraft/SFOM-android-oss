@@ -165,11 +165,9 @@ fun GameResourceUploadContentInfoScreen() {
 
         SFOMButton(
             "Next step",
-            null,
-            null,
-            SFOMTheme.colorScheme.sfomGreenPrimary,
-            SFOMTheme.colorScheme.textWhite,
-            SFOMButtonStyle.FULLWIDTH
+            backgroundColor = SFOMTheme.colorScheme.sfomGreenPrimary,
+            textColor = SFOMTheme.colorScheme.textWhite,
+            sfomButtonStyle = SFOMButtonStyle.FULLWIDTH
         ) {
 
         }
@@ -414,12 +412,10 @@ fun GameResourceUploadAdditionalInfoScreen() {
                 .padding(16.dp)
         ) {
             SFOMButton(
-                "Upload",
-                null,
-                null,
-                SFOMTheme.colorScheme.sfomGreenPrimary,
-                SFOMTheme.colorScheme.textWhite,
-                SFOMButtonStyle.FULLWIDTH
+                text = "Upload",
+                backgroundColor = SFOMTheme.colorScheme.sfomGreenPrimary,
+                textColor = SFOMTheme.colorScheme.textWhite,
+                sfomButtonStyle = SFOMButtonStyle.FULLWIDTH
             ) {
 
             }

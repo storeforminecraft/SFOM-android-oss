@@ -12,7 +12,7 @@ data object AuthRoute
 data object AuthSelectionRoute
 
 @Serializable
-data object LoginRoute
+data object SignInRoute
 
 @Serializable
 data object SignUpRoute
@@ -27,7 +27,7 @@ fun NavGraphBuilder.authNavGraph() {
         composable<AuthSelectionRoute> {
 
         }
-        composable<LoginRoute> {
+        composable<SignInRoute> {
 
         }
         composable<SignUpRoute> {

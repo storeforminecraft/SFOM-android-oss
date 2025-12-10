@@ -109,7 +109,7 @@ fun SFOMButton(
     text: String? = null,
     @DrawableRes icon: Int? = null,
     modifier: Modifier = Modifier,
-    sfomButtonStyle: SFOMButtonStyle.FULLWIDTH,
+    sfomButtonStyle: SFOMButtonStyle,
     backgroundColor: Color = SFOMTheme.colorScheme.backgroundPrimary,
     textColor: Color? = null,
     iconTintColor: Color? = null,
